@@ -1,0 +1,706 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MediQuick Pharmacy - Home</title>
+
+<script>
+if (!localStorage.getItem("mediquickLoggedUser")) {
+    window.location.replace("login.html");
+}
+</script>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f1fbff;
+    color:#17324d;
+}
+
+/* NAVBAR */
+
+.navbar{
+    background:white;
+    padding:18px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 12px rgba(0,0,0,0.08);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#1598c9;
+}
+
+.logo span{
+    color:#17324d;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:24px;
+    list-style:none;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#17324d;
+    font-weight:600;
+}
+
+.nav-links a:hover{
+    color:#1598c9;
+}
+
+.logout-btn{
+    border:none;
+    background:#1598c9;
+    color:white;
+    padding:11px 19px;
+    border-radius:9px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.logout-btn:hover{
+    background:#087da9;
+}
+
+/* WELCOME BAR */
+
+.user-bar{
+    background:#dff6ff;
+    padding:12px 6%;
+    text-align:right;
+    color:#17617d;
+}
+
+/* HERO */
+
+.hero{
+    min-height:610px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:60px;
+    padding:65px 8%;
+
+    background:linear-gradient(
+        135deg,
+        #e8faff,
+        #ffffff,
+        #f2fbff
+    );
+}
+
+.hero-text{
+    max-width:650px;
+}
+
+.hero-text h1{
+    font-size:55px;
+    line-height:1.15;
+    margin-bottom:22px;
+}
+
+.blue{
+    color:#1598c9;
+}
+
+.hero-text p{
+    font-size:19px;
+    line-height:1.7;
+    color:#5d7488;
+    margin-bottom:32px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:16px;
+}
+
+.btn{
+    text-decoration:none;
+    padding:14px 27px;
+    border-radius:11px;
+    font-size:17px;
+    font-weight:bold;
+}
+
+.primary{
+    background:#1598c9;
+    color:white;
+}
+
+.primary:hover{
+    background:#087da9;
+}
+
+.secondary{
+    background:white;
+    color:#1598c9;
+    border:2px solid #1598c9;
+}
+
+.secondary:hover{
+    background:#e8faff;
+}
+
+/* NEW HEALTHCARE IMAGE */
+
+.hero-image-box{
+    width:480px;
+    height:370px;
+    border-radius:28px;
+    overflow:hidden;
+    background:white;
+    box-shadow:0 18px 45px rgba(0,0,0,0.12);
+    position:relative;
+}
+
+.hero-image{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* FALLBACK */
+
+.image-fallback{
+    display:none;
+    width:100%;
+    height:100%;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    background:#e8faff;
+    text-align:center;
+}
+
+.image-fallback-icon{
+    font-size:75px;
+    margin-bottom:15px;
+}
+
+.image-fallback h3{
+    color:#1598c9;
+    font-size:25px;
+}
+
+.image-fallback p{
+    color:#60788a;
+    margin-top:8px;
+}
+
+/* SERVICES */
+
+.services{
+    padding:70px 8%;
+    text-align:center;
+    background:#f1fbff;
+}
+
+.services h2{
+    font-size:35px;
+    color:#17324d;
+    margin-bottom:12px;
+}
+
+.services-intro{
+    color:#6b7f90;
+    font-size:17px;
+    margin-bottom:40px;
+}
+
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.service-card{
+    background:white;
+    padding:32px 22px;
+    border-radius:18px;
+    box-shadow:0 7px 25px rgba(0,0,0,0.07);
+    transition:0.3s;
+}
+
+.service-card:hover{
+    transform:translateY(-6px);
+}
+
+.service-icon{
+    font-size:48px;
+    margin-bottom:18px;
+}
+
+.service-card h3{
+    color:#1598c9;
+    margin-bottom:12px;
+}
+
+.service-card p{
+    color:#687c8d;
+    line-height:1.6;
+}
+
+/* HEALTH SECTION */
+
+.health-section{
+    padding:65px 8%;
+    background:white;
+    text-align:center;
+}
+
+.health-section h2{
+    color:#1598c9;
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+.health-section p{
+    max-width:750px;
+    margin:auto;
+    color:#687c8d;
+    font-size:17px;
+    line-height:1.7;
+}
+
+/* FOOTER */
+
+footer{
+    background:#17324d;
+    color:white;
+    text-align:center;
+    padding:30px 8%;
+}
+
+footer h3{
+    color:#8edcff;
+    margin-bottom:8px;
+}
+
+footer p{
+    color:#d9e8ef;
+    margin:5px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+
+    .nav-links{
+        gap:14px;
+    }
+
+    .hero-image-box{
+        width:400px;
+        height:320px;
+    }
+
+}
+
+@media(max-width:850px){
+
+    .navbar{
+        flex-direction:column;
+        gap:18px;
+    }
+
+    .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .user-bar{
+        text-align:center;
+    }
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+        padding:55px 6%;
+    }
+
+    .hero-text h1{
+        font-size:45px;
+    }
+
+    .hero-text p{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .hero-image-box{
+        width:90%;
+        max-width:500px;
+        height:330px;
+    }
+
+    .service-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .logo{
+        font-size:23px;
+    }
+
+    .nav-links{
+        gap:12px;
+    }
+
+    .nav-links a{
+        font-size:14px;
+    }
+
+    .hero-text h1{
+        font-size:37px;
+    }
+
+    .hero-text p{
+        font-size:16px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    .hero-image-box{
+        width:100%;
+        height:270px;
+    }
+
+    .service-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        Medi<span>Quick</span> Pharmacy
+    </div>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="shop.html">Shop</a>
+        </li>
+
+        <li>
+            <a href="about.html">About Us</a>
+        </li>
+
+        <li>
+            <a href="prescription.html">Prescriptions</a>
+        </li>
+
+        <li>
+            <a href="consult.html">Consult Doctor</a>
+        </li>
+
+        <li>
+            <a href="offers.html">Offers</a>
+        </li>
+
+        <li>
+            <button
+                class="logout-btn"
+                onclick="logoutUser()">
+                Logout
+            </button>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- WELCOME -->
+
+<div class="user-bar">
+
+    Welcome,
+    <strong class="logged-user-name">
+        Customer
+    </strong>
+
+</div>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+
+    <div class="hero-text">
+
+        <h1>
+
+            <span class="blue">
+                Trusted Care
+            </span>
+
+            & Better Health
+
+        </h1>
+
+
+        <p>
+
+            Welcome to MediQuick Pharmacy.
+            Your trusted online pharmacy for
+            quality medicines, wellness products
+            and convenient healthcare services.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a
+                href="shop.html"
+                class="btn primary">
+
+                Shop Now →
+
+            </a>
+
+
+            <a
+                href="about.html"
+                class="btn secondary">
+
+                Learn More
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- NEW PICTURE -->
+
+    <div class="hero-image-box">
+
+        <img
+            src="https://images.unsplash.com/photo-1580281658223-9b93f18ae9ae?auto=format&fit=crop&w=900&q=85"
+            alt="Healthcare Professional"
+            class="hero-image"
+            onerror="
+                this.style.display='none';
+                document.getElementById('imageFallback').style.display='flex';
+            "
+        >
+
+
+        <div
+            id="imageFallback"
+            class="image-fallback">
+
+            <div class="image-fallback-icon">
+                🩺
+            </div>
+
+            <h3>
+                MediQuick Healthcare
+            </h3>
+
+            <p>
+                Trusted Care & Better Health
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section class="services">
+
+    <h2>
+        Our Healthcare Services
+    </h2>
+
+    <p class="services-intro">
+
+        Simple and convenient healthcare
+        solutions for you and your family.
+
+    </p>
+
+
+    <div class="service-grid">
+
+
+        <div class="service-card">
+
+            <div class="service-icon">
+                💊
+            </div>
+
+            <h3>
+                Quality Medicines
+            </h3>
+
+            <p>
+                Browse a wide range of
+                healthcare and wellness
+                products through our pharmacy.
+            </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+            <div class="service-icon">
+                📋
+            </div>
+
+            <h3>
+                Prescription Service
+            </h3>
+
+            <p>
+                Upload your prescription
+                for verification by
+                authorized pharmacy staff.
+            </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+            <div class="service-icon">
+                👨‍⚕️
+            </div>
+
+            <h3>
+                Doctor Consultation
+            </h3>
+
+            <p>
+                Send your healthcare inquiries
+                through our consultation service.
+            </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+            <div class="service-icon">
+                🚚
+            </div>
+
+            <h3>
+                Easy Ordering
+            </h3>
+
+            <p>
+                Select healthcare products
+                and place orders conveniently
+                through our online platform.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- HEALTH MESSAGE -->
+
+<section class="health-section">
+
+    <h2>
+        Your Health Matters
+    </h2>
+
+    <p>
+
+        MediQuick Pharmacy is designed to make
+        accessing healthcare products and services
+        simple, convenient and reliable.
+
+    </p>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h3>
+        MediQuick Pharmacy
+    </h3>
+
+    <p>
+        Trust, Care & Better Health
+    </p>
+
+    <p>
+        © 2026 MediQuick Pharmacy.
+        All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

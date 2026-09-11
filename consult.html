@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Consult Doctor | MediQuick</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a href="index.html" class="logo">
+        <span class="logo-icon">✚</span>
+        Medi<span>Quick</span>
+    </a>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About Us</a>
+        <a href="prescription.html">Prescriptions</a>
+        <a href="consult.html" class="active">Consult Doctor</a>
+        <a href="offers.html">Offers</a>
+
+    </nav>
+
+    <div class="nav-right">
+
+        <a href="shop.html#cart">
+            🛒 <span id="cartCount">0</span>
+        </a>
+
+        <a href="login.html" id="loginNav">Login</a>
+
+        <a href="register.html" id="registerNav">
+            Register
+        </a>
+
+        <button id="logoutBtn"
+                class="logout-btn"
+                onclick="logout()"
+                style="display:none;">
+            Logout
+        </button>
+
+    </div>
+
+</header>
+
+
+<section class="page-header">
+
+    <span>HEALTHCARE SUPPORT</span>
+
+    <h1>Consult a Doctor</h1>
+
+    <p>
+        Send a consultation request to receive professional healthcare support.
+    </p>
+
+</section>
+
+
+<section class="consult-section">
+
+    <div class="consult-info">
+
+        <span class="small-title">PROFESSIONAL SUPPORT</span>
+
+        <h2>Get the guidance you need.</h2>
+
+        <p>
+            MediQuick allows customers to submit a consultation request
+            conveniently through the website.
+        </p>
+
+
+        <div class="doctor-feature">
+
+            <div>👨‍⚕️</div>
+
+            <div>
+                <strong>Healthcare Professionals</strong>
+                <p>Request a consultation through our platform.</p>
+            </div>
+
+        </div>
+
+
+        <div class="doctor-feature">
+
+            <div>🔒</div>
+
+            <div>
+                <strong>Private Information</strong>
+                <p>Your submitted information should be handled securely.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="form-card">
+
+        <h2>Consultation Request</h2>
+
+        <form onsubmit="submitConsultation(event)">
+
+            <label>Full Name</label>
+
+            <input
+                type="text"
+                placeholder="Enter your name"
+                required>
+
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                placeholder="Enter your email"
+                required>
+
+
+            <label>Phone Number</label>
+
+            <input
+                type="tel"
+                placeholder="Enter your phone number"
+                required>
+
+
+            <label>Preferred Date</label>
+
+            <input
+                type="date"
+                required>
+
+
+            <label>Your Message</label>
+
+            <textarea
+                placeholder="Briefly describe your request..."
+                required></textarea>
+
+
+            <button
+                type="submit"
+                class="btn primary-btn full-btn">
+                Send Request
+            </button>
+
+        </form>
+
+
+        <div
+            id="consultMessage"
+            class="success-message"
+            style="display:none;">
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <div class="copyright">
+        © 2026 MediQuick Pharmacy. All Rights Reserved.
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

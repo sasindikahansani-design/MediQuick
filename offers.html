@@ -1,0 +1,1037 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Offers | MediQuick</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f3fbff;
+            color: #234755;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            width: 100%;
+            height: 90px;
+            background: #ffffff;
+            border-bottom: 1px solid #d9edf4;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-container {
+            width: 88%;
+            max-width: 1400px;
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: #073b5c;
+            font-size: 31px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .logo-plus {
+            color: #0785ad;
+            font-size: 36px;
+            margin-right: 8px;
+        }
+
+        /* MENU */
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links li {
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #36586a;
+            font-size: 17px;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #0785ad;
+        }
+
+        /* RIGHT */
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-right a {
+            text-decoration: none;
+            color: #36586a;
+            font-size: 17px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .nav-right a:hover {
+            color: #0785ad;
+        }
+
+        .cart-btn {
+            background: #eaf8fc;
+            border-radius: 30px;
+            padding: 13px 18px;
+        }
+
+
+        /* ================= HERO ================= */
+
+        .hero {
+            padding: 60px 20px 45px;
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e8f9ff,
+                    #ffffff
+                );
+        }
+
+        .hero h1 {
+            color: #073b5c;
+            font-size: 44px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            color: #5c7784;
+            font-size: 17px;
+        }
+
+
+        /* ================= OFFERS SECTION ================= */
+
+        .offers-section {
+            width: 86%;
+            max-width: 1250px;
+            margin: 55px auto 80px;
+        }
+
+        .offers-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .offers-title h2 {
+            color: #073b5c;
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .offers-title p {
+            color: #71818b;
+        }
+
+
+        /* ================= GRID ================= */
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+
+        /* ================= OFFER CARD ================= */
+
+        .offer-card {
+            background: #ffffff;
+            border: 1px solid #d7eaf1;
+            border-radius: 24px;
+            overflow: hidden;
+
+            box-shadow:
+                0 12px 35px rgba(0, 100, 140, 0.10);
+
+            transition: 0.3s;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 18px 40px rgba(0, 100, 140, 0.16);
+        }
+
+
+        /* ================= IMAGE ================= */
+
+        .offer-image {
+            width: 100%;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            background: #e8f8fc;
+        }
+
+        .offer-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+
+        /* ================= DISCOUNT ================= */
+
+        .discount {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+
+            background: #0785ad;
+            color: #ffffff;
+
+            padding: 11px 18px;
+
+            border-radius: 30px;
+
+            font-size: 15px;
+            font-weight: bold;
+
+            z-index: 10;
+
+            box-shadow:
+                0 5px 15px rgba(0, 0, 0, 0.12);
+        }
+
+
+        /* ================= CONTENT ================= */
+
+        .offer-content {
+            padding: 30px;
+        }
+
+        .offer-content h2 {
+            color: #073b5c;
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .offer-content p {
+            color: #5c7480;
+            font-size: 16px;
+            line-height: 1.7;
+            min-height: 55px;
+            margin-bottom: 22px;
+        }
+
+
+        /* ================= BUTTON ================= */
+
+        .shop-btn {
+            display: inline-block;
+
+            text-decoration: none;
+
+            background: #0785ad;
+            color: #ffffff;
+
+            padding: 14px 28px;
+
+            border-radius: 10px;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .shop-btn:hover {
+            background: #056b89;
+            transform: translateY(-2px);
+        }
+
+
+        /* ================= SPECIAL OFFER ================= */
+
+        .special-offer {
+            margin-top: 40px;
+
+            background: #ffffff;
+
+            border: 1px solid #d7eaf1;
+
+            border-radius: 22px;
+
+            padding: 40px;
+
+            text-align: center;
+
+            box-shadow:
+                0 10px 30px rgba(0, 100, 140, 0.08);
+        }
+
+        .special-offer h2 {
+            color: #073b5c;
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .special-offer p {
+            color: #637c87;
+            line-height: 1.7;
+            margin-bottom: 22px;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #073b5c;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        footer p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1200px) {
+
+            .nav-container {
+                width: 94%;
+            }
+
+            .nav-links {
+                gap: 18px;
+            }
+
+            .nav-links a,
+            .nav-right a {
+                font-size: 14px;
+            }
+
+            .logo a {
+                font-size: 26px;
+            }
+
+        }
+
+
+        @media (max-width: 950px) {
+
+            .navbar {
+                height: auto;
+                padding: 18px 0;
+            }
+
+            .nav-container {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .offers-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .offers-section {
+                width: 92%;
+            }
+
+            .offer-image {
+                height: 250px;
+            }
+
+            .offer-content {
+                padding: 24px;
+            }
+
+            .offer-content h2 {
+                font-size: 24px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-right {
+                gap: 12px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==================================================
+         NAVBAR
+    ================================================== -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+
+            <!-- LOGO -->
+
+            <div class="logo">
+
+                <a href="index.html">
+
+                    <span class="logo-plus">+</span>
+                    MediQuick
+
+                </a>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="shop.html">
+                        Shop
+                    </a>
+                </li>
+
+                <li>
+                    <a href="about.html">
+                        About Us
+                    </a>
+                </li>
+
+                <li>
+                    <a href="prescription.html">
+                        Prescriptions
+                    </a>
+                </li>
+
+                <li>
+                    <a href="consult.html">
+                        Consult Doctor
+                    </a>
+                </li>
+
+                <li>
+                    <a href="offers.html" class="active">
+                        Offers
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <!-- RIGHT SIDE -->
+
+            <div class="nav-right">
+
+                <a
+                    href="shop.html#cart"
+                    class="cart-btn">
+
+                    🛒
+                    <span id="cartCount">0</span>
+
+                </a>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+                <a href="register.html">
+                    Register
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ==================================================
+         HERO
+    ================================================== -->
+
+    <section class="hero">
+
+        <h1>
+            Special Offers
+        </h1>
+
+        <p>
+            Great deals on selected healthcare products
+        </p>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         OFFERS
+    ================================================== -->
+
+    <section class="offers-section">
+
+
+        <div class="offers-title">
+
+            <h2>
+                Save More with MediQuick
+            </h2>
+
+            <p>
+                Explore our latest healthcare offers and special discounts.
+            </p>
+
+        </div>
+
+
+        <div class="offers-grid">
+
+
+            <!-- ==================================================
+                 OFFER 1
+            ================================================== -->
+
+            <div class="offer-card">
+
+                <div class="offer-image">
+
+                    <span class="discount">
+                        20% OFF
+                    </span>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?auto=format&fit=crop&w=1000&q=85"
+                        alt="Vitamin products"
+                        onerror="showFallback(this, 'Vitamin Products', '💊')"
+                    >
+
+                </div>
+
+
+                <div class="offer-content">
+
+                    <h2>
+                        Wellness Essentials
+                    </h2>
+
+                    <p>
+                        Special savings on selected vitamins,
+                        supplements and wellness products.
+                    </p>
+
+                    <a
+                        href="shop.html"
+                        class="shop-btn">
+
+                        Shop Now
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 OFFER 2
+            ================================================== -->
+
+            <div class="offer-card">
+
+                <div class="offer-image">
+
+                    <span class="discount">
+                        15% OFF
+                    </span>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&w=1000&q=85"
+                        alt="Healthcare products"
+                        onerror="showFallback(this, 'Healthcare Products', '🏥')"
+                    >
+
+                </div>
+
+
+                <div class="offer-content">
+
+                    <h2>
+                        Personal Care
+                    </h2>
+
+                    <p>
+                        Discover special prices on selected
+                        personal care and healthcare products.
+                    </p>
+
+                    <a
+                        href="shop.html"
+                        class="shop-btn">
+
+                        Shop Now
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 OFFER 3
+            ================================================== -->
+
+            <div class="offer-card">
+
+                <div class="offer-image">
+
+                    <span class="discount">
+                        10% OFF
+                    </span>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1000&q=85"
+                        alt="Health check products"
+                        onerror="showFallback(this, 'Health Essentials', '🩺')"
+                    >
+
+                </div>
+
+
+                <div class="offer-content">
+
+                    <h2>
+                        Health Check Essentials
+                    </h2>
+
+                    <p>
+                        Save on selected health monitoring
+                        products and everyday healthcare essentials.
+                    </p>
+
+                    <a
+                        href="shop.html"
+                        class="shop-btn">
+
+                        Shop Now
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 OFFER 4
+            ================================================== -->
+
+            <div class="offer-card">
+
+                <div class="offer-image">
+
+                    <span class="discount">
+                        25% OFF
+                    </span>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1550572017-ed5b9c8a6f0b?auto=format&fit=crop&w=1000&q=85"
+                        alt="Wellness collection"
+                        onerror="showFallback(this, 'Wellness Collection', '🌿')"
+                    >
+
+                </div>
+
+
+                <div class="offer-content">
+
+                    <h2>
+                        Wellness & Immunity
+                    </h2>
+
+                    <p>
+                        Enjoy special discounts on selected
+                        vitamins, supplements and wellness products.
+                    </p>
+
+                    <a
+                        href="shop.html"
+                        class="shop-btn">
+
+                        Shop Now
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 OFFER 5
+            ================================================== -->
+
+            <div class="offer-card">
+
+                <div class="offer-image">
+
+                    <span class="discount">
+                        18% OFF
+                    </span>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=1000&q=85"
+                        alt="Skin care products"
+                        onerror="showFallback(this, 'Skin Care Collection', '🧴')"
+                    >
+
+                </div>
+
+
+                <div class="offer-content">
+
+                    <h2>
+                        Skin Care Collection
+                    </h2>
+
+                    <p>
+                        Discover great prices on selected
+                        moisturisers, lotions and personal care products.
+                    </p>
+
+                    <a
+                        href="shop.html"
+                        class="shop-btn">
+
+                        Shop Now
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 OFFER 6
+            ================================================== -->
+
+            <div class="offer-card">
+
+                <div class="offer-image">
+
+                    <span class="discount">
+                        15% OFF
+                    </span>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1000&q=85"
+                        alt="Family care products"
+                        onerror="showFallback(this, 'Family Care Pack', '👨‍👩‍👧')"
+                    >
+
+                </div>
+
+
+                <div class="offer-content">
+
+                    <h2>
+                        Family Care Pack
+                    </h2>
+
+                    <p>
+                        Save on selected everyday healthcare
+                        essentials suitable for family care.
+                    </p>
+
+                    <a
+                        href="shop.html"
+                        class="shop-btn">
+
+                        Shop Now
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ==================================================
+             SPECIAL OFFER
+        ================================================== -->
+
+        <div class="special-offer">
+
+            <h2>
+                🎁 More Savings at MediQuick
+            </h2>
+
+            <p>
+                Check our shop regularly for new healthcare
+                deals, discounts and special offers.
+            </p>
+
+            <a
+                href="shop.html"
+                class="shop-btn">
+
+                View All Products
+
+            </a>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ==================================================
+         FOOTER
+    ================================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 MediQuick Pharmacy. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    ================================================== -->
+
+    <script>
+
+
+        /* ==================================================
+           IMAGE FALLBACK
+        ================================================== */
+
+        function showFallback(
+            image,
+            title,
+            icon
+        ) {
+
+            image.onerror = null;
+
+
+            const svg = `
+
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="1000"
+                    height="700"
+                    viewBox="0 0 1000 700">
+
+                    <defs>
+
+                        <linearGradient
+                            id="bg"
+                            x1="0"
+                            y1="0"
+                            x2="1"
+                            y2="1">
+
+                            <stop
+                                offset="0%"
+                                stop-color="#e8f9ff"/>
+
+                            <stop
+                                offset="100%"
+                                stop-color="#b8e8f4"/>
+
+                        </linearGradient>
+
+                    </defs>
+
+
+                    <rect
+                        width="1000"
+                        height="700"
+                        fill="url(#bg)"
+                    />
+
+
+                    <circle
+                        cx="500"
+                        cy="285"
+                        r="160"
+                        fill="#ffffff"
+                        opacity="0.95"
+                    />
+
+
+                    <text
+                        x="500"
+                        y="345"
+                        text-anchor="middle"
+                        font-size="130">
+
+                        ${icon}
+
+                    </text>
+
+
+                    <text
+                        x="500"
+                        y="485"
+                        text-anchor="middle"
+                        font-family="Arial"
+                        font-size="40"
+                        font-weight="bold"
+                        fill="#073b5c">
+
+                        ${title}
+
+                    </text>
+
+
+                    <text
+                        x="500"
+                        y="535"
+                        text-anchor="middle"
+                        font-family="Arial"
+                        font-size="24"
+                        fill="#52707c">
+
+                        MediQuick Pharmacy
+
+                    </text>
+
+                </svg>
+
+            `;
+
+
+            image.src =
+                "data:image/svg+xml;charset=UTF-8," +
+                encodeURIComponent(svg);
+
+        }
+
+
+
+        /* ==================================================
+           CART COUNT
+        ================================================== */
+
+        const cart =
+            JSON.parse(
+                localStorage.getItem(
+                    "mediquickCart"
+                )
+            ) || [];
+
+
+        const cartCount =
+            document.getElementById(
+                "cartCount"
+            );
+
+
+        if (cartCount) {
+
+            let total = 0;
+
+
+            cart.forEach(function(item) {
+
+                total +=
+                    Number(item.quantity) || 0;
+
+            });
+
+
+            cartCount.textContent =
+                total;
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

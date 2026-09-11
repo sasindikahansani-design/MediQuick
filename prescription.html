@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prescriptions | MediQuick</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a href="index.html" class="logo">
+        <span class="logo-icon">✚</span>
+        Medi<span>Quick</span>
+    </a>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About Us</a>
+        <a href="prescription.html" class="active">Prescriptions</a>
+        <a href="consult.html">Consult Doctor</a>
+        <a href="offers.html">Offers</a>
+
+    </nav>
+
+    <div class="nav-right">
+
+        <a href="shop.html#cart">
+            🛒 <span id="cartCount">0</span>
+        </a>
+
+        <a href="login.html" id="loginNav">Login</a>
+
+        <a href="register.html" id="registerNav">
+            Register
+        </a>
+
+        <button id="logoutBtn"
+                class="logout-btn"
+                onclick="logout()"
+                style="display:none;">
+            Logout
+        </button>
+
+    </div>
+
+</header>
+
+
+<section class="page-header">
+
+    <span>PRESCRIPTION SERVICE</span>
+
+    <h1>Upload Your Prescription</h1>
+
+    <p>
+        Submit your prescription securely for verification.
+    </p>
+
+</section>
+
+
+<section class="form-section">
+
+    <div class="form-card">
+
+        <div class="form-icon">📋</div>
+
+        <h2>Prescription Upload</h2>
+
+        <p class="form-description">
+            Please enter your details and select your prescription file.
+        </p>
+
+
+        <form onsubmit="uploadPrescription(event)">
+
+            <label>Full Name</label>
+
+            <input
+                type="text"
+                id="prescriptionName"
+                placeholder="Enter your name"
+                required>
+
+
+            <label>Phone Number</label>
+
+            <input
+                type="tel"
+                placeholder="Enter your phone number"
+                required>
+
+
+            <label>Prescription File</label>
+
+            <input
+                type="file"
+                id="prescriptionFile"
+                accept=".jpg,.jpeg,.png,.pdf"
+                required>
+
+
+            <label>Additional Message</label>
+
+            <textarea
+                placeholder="Add any additional information..."></textarea>
+
+
+            <button type="submit"
+                    class="btn primary-btn full-btn">
+                Upload Prescription
+            </button>
+
+        </form>
+
+
+        <div id="prescriptionMessage"
+             class="success-message"
+             style="display:none;">
+        </div>
+
+    </div>
+
+
+    <div class="process-card">
+
+        <span class="small-title">HOW IT WORKS</span>
+
+        <h2>Simple & Secure</h2>
+
+        <div class="process-step">
+            <span>1</span>
+            <div>
+                <strong>Upload</strong>
+                <p>Submit your prescription.</p>
+            </div>
+        </div>
+
+        <div class="process-step">
+            <span>2</span>
+            <div>
+                <strong>Verification</strong>
+                <p>Our staff reviews the prescription.</p>
+            </div>
+        </div>
+
+        <div class="process-step">
+            <span>3</span>
+            <div>
+                <strong>Order</strong>
+                <p>Continue with your approved order.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <div class="copyright">
+        © 2026 MediQuick Pharmacy. All Rights Reserved.
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

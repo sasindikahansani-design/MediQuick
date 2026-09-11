@@ -1,0 +1,342 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Register - MediQuick Pharmacy
+    </title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            background:#eefaff;
+            color:#17324d;
+        }
+
+        /* NAVBAR */
+
+        .navbar{
+            background:white;
+            padding:18px 6%;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            box-shadow:0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .logo{
+            font-size:25px;
+            font-weight:bold;
+            color:#1598c9;
+        }
+
+        .logo span{
+            color:#17324d;
+        }
+
+        .nav-links{
+            display:flex;
+            gap:25px;
+            align-items:center;
+            list-style:none;
+        }
+
+        .nav-links a{
+            text-decoration:none;
+            color:#17324d;
+            font-weight:600;
+        }
+
+        .nav-links a:hover{
+            color:#1598c9;
+        }
+
+        /* REGISTER */
+
+        .register-container{
+            min-height:calc(100vh - 75px);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:40px 20px;
+        }
+
+        .register-box{
+            width:100%;
+            max-width:500px;
+            background:white;
+            padding:40px;
+            border-radius:22px;
+            box-shadow:0 12px 40px rgba(0,0,0,0.10);
+        }
+
+        .register-icon{
+            text-align:center;
+            font-size:48px;
+            margin-bottom:8px;
+        }
+
+        .register-box h1{
+            text-align:center;
+            color:#1598c9;
+            margin-bottom:8px;
+        }
+
+        .subtitle{
+            text-align:center;
+            color:#667788;
+            margin-bottom:28px;
+        }
+
+        .form-group{
+            margin-bottom:17px;
+        }
+
+        .form-group label{
+            display:block;
+            margin-bottom:7px;
+            font-weight:bold;
+        }
+
+        .form-group input{
+            width:100%;
+            padding:13px;
+            border:1px solid #cbdde7;
+            border-radius:10px;
+            outline:none;
+            font-size:15px;
+        }
+
+        .form-group input:focus{
+            border-color:#1598c9;
+            box-shadow:0 0 0 3px rgba(21,152,201,0.10);
+        }
+
+        .register-btn{
+            width:100%;
+            padding:14px;
+            border:none;
+            border-radius:10px;
+            background:#1598c9;
+            color:white;
+            font-size:16px;
+            font-weight:bold;
+            cursor:pointer;
+            margin-top:5px;
+        }
+
+        .register-btn:hover{
+            background:#087da9;
+        }
+
+        .message{
+            margin-top:18px;
+            text-align:center;
+            font-weight:bold;
+            min-height:20px;
+        }
+
+        .login-link{
+            text-align:center;
+            margin-top:22px;
+            color:#667788;
+        }
+
+        .login-link a{
+            color:#1598c9;
+            font-weight:bold;
+            text-decoration:none;
+        }
+
+        @media(max-width:800px){
+
+            .navbar{
+                flex-direction:column;
+                gap:15px;
+            }
+
+            .nav-links{
+                flex-wrap:wrap;
+                justify-content:center;
+                gap:15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        Medi<span>Quick</span> Pharmacy
+    </div>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="login.html">
+                Login
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- REGISTER -->
+
+<div class="register-container">
+
+    <div class="register-box">
+
+        <div class="register-icon">
+            👤
+        </div>
+
+        <h1>
+            Create Account
+        </h1>
+
+        <p class="subtitle">
+            Register to use MediQuick Pharmacy
+        </p>
+
+
+        <form id="registerForm">
+
+
+            <div class="form-group">
+
+                <label for="fullName">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="fullName"
+                    placeholder="Enter your full name"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="username">
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Create a username"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Create a password"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="confirmPassword">
+                    Confirm Password
+                </label>
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm your password"
+                    required>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="register-btn">
+
+                Register
+
+            </button>
+
+
+        </form>
+
+
+        <div
+            id="registerMessage"
+            class="message">
+        </div>
+
+
+        <div class="login-link">
+
+            Already have an account?
+
+            <a href="login.html">
+                Login here
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

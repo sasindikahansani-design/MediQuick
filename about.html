@@ -1,0 +1,740 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us | MediQuick</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4fbff;
+            color: #234755;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            width: 100%;
+            height: 90px;
+            background: #ffffff;
+            border-bottom: 1px solid #d9edf4;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-container {
+            width: 88%;
+            max-width: 1400px;
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: #073b5c;
+            font-size: 31px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .logo-plus {
+            color: #0785ad;
+            font-size: 36px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #36586a;
+            font-size: 17px;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #0785ad;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-right a {
+            text-decoration: none;
+            color: #36586a;
+            font-size: 17px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .nav-right a:hover {
+            color: #0785ad;
+        }
+
+        .cart-btn {
+            background: #eaf8fc;
+            border-radius: 30px;
+            padding: 13px 18px;
+            min-width: 70px;
+            text-align: center;
+        }
+
+        /* ================= HERO ================= */
+
+        .about-hero {
+            height: 220px;
+            background: linear-gradient(
+                135deg,
+                #e9f9ff,
+                #ffffff
+            );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            color: #123f59;
+            font-size: 44px;
+            margin-bottom: 12px;
+        }
+
+        .about-hero p {
+            color: #527180;
+            font-size: 17px;
+        }
+
+        /* ================= ABOUT SECTION ================= */
+
+        .about-section {
+            width: 86%;
+            max-width: 1250px;
+            margin: 70px auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+
+            align-items: center;
+        }
+
+        /* IMAGE */
+
+        .about-image {
+            width: 100%;
+            height: 420px;
+            border-radius: 25px;
+            overflow: hidden;
+            background: #e5f7fc;
+            box-shadow: 0 10px 30px rgba(0, 100, 140, 0.12);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* CONTENT */
+
+        .about-content .small-title {
+            color: #0785ad;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .about-content h2 {
+            color: #123b55;
+            font-size: 43px;
+            line-height: 1.15;
+            margin-bottom: 22px;
+        }
+
+        .about-content p {
+            color: #536f7d;
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        /* ================= FEATURES ================= */
+
+        .features {
+            width: 86%;
+            max-width: 1250px;
+            margin: 0 auto 80px;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            text-align: center;
+
+            box-shadow:
+                0 5px 20px rgba(0, 100, 140, 0.09);
+
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .feature-icon {
+            width: 65px;
+            height: 65px;
+
+            margin: 0 auto 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #e6f7fc;
+            border-radius: 50%;
+
+            font-size: 30px;
+        }
+
+        .feature-card h3 {
+            color: #123f59;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: #6b7f89;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* ================= MISSION ================= */
+
+        .mission {
+            background: white;
+            padding: 70px 8%;
+            text-align: center;
+        }
+
+        .mission h2 {
+            color: #123f59;
+            font-size: 36px;
+            margin-bottom: 18px;
+        }
+
+        .mission p {
+            max-width: 800px;
+            margin: auto;
+            color: #607984;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1200px) {
+
+            .nav-container {
+                width: 94%;
+            }
+
+            .nav-links {
+                gap: 18px;
+            }
+
+            .nav-links a,
+            .nav-right a {
+                font-size: 14px;
+            }
+
+            .logo a {
+                font-size: 26px;
+            }
+        }
+
+        @media (max-width: 900px) {
+
+            .navbar {
+                height: auto;
+                padding: 18px 0;
+            }
+
+            .nav-container {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 18px;
+            }
+
+            .nav-links {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .about-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-image {
+                height: 350px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .about-hero h1 {
+                font-size: 34px;
+            }
+
+            .about-content h2 {
+                font-size: 32px;
+            }
+
+            .about-section {
+                width: 90%;
+            }
+
+            .features {
+                width: 90%;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-right {
+                gap: 12px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <!-- LOGO -->
+
+            <div class="logo">
+
+                <a href="index.html">
+
+                    <span class="logo-plus">+</span>
+                    MediQuick
+
+                </a>
+
+            </div>
+
+
+            <!-- MENU -->
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="shop.html">
+                        Shop
+                    </a>
+                </li>
+
+                <li>
+                    <a href="about.html" class="active">
+                        About Us
+                    </a>
+                </li>
+
+                <li>
+                    <a href="prescription.html">
+                        Prescriptions
+                    </a>
+                </li>
+
+                <li>
+                    <a href="consult.html">
+                        Consult Doctor
+                    </a>
+                </li>
+
+                <li>
+                    <a href="offers.html">
+                        Offers
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <!-- RIGHT SIDE -->
+
+            <div class="nav-right">
+
+                <a href="shop.html#cart" class="cart-btn">
+
+                    🛒 <span id="cartCount">0</span>
+
+                </a>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+                <a href="register.html">
+                    Register
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="about-hero">
+
+        <div>
+
+            <h1>
+                About MediQuick
+            </h1>
+
+            <p>
+                We connect people with convenient healthcare products and services.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section class="about-section">
+
+
+        <!-- IMAGE -->
+
+        <div class="about-image">
+
+            <img
+                id="aboutImage"
+                src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1000&q=85"
+                alt="Healthcare professionals"
+            >
+
+        </div>
+
+
+
+        <!-- CONTENT -->
+
+        <div class="about-content">
+
+            <div class="small-title">
+                WHO WE ARE
+            </div>
+
+            <h2>
+                Care you can trust.
+            </h2>
+
+            <p>
+                MediQuick is an online pharmacy platform designed to make
+                healthcare shopping simple, convenient and accessible.
+            </p>
+
+            <p>
+                Customers can explore healthcare products, upload prescriptions,
+                request consultations and access useful health information.
+            </p>
+
+            <p>
+                Our goal is to provide a reliable digital healthcare experience
+                while helping customers find the products and services they need.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FEATURES ================= -->
+
+    <section class="features">
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                💊
+            </div>
+
+            <h3>
+                Quality Products
+            </h3>
+
+            <p>
+                Access a range of medicines, wellness products and personal care items.
+            </p>
+
+        </div>
+
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🩺
+            </div>
+
+            <h3>
+                Healthcare Support
+            </h3>
+
+            <p>
+                Customers can request consultations and receive useful healthcare information.
+            </p>
+
+        </div>
+
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🔒
+            </div>
+
+            <h3>
+                Secure & Convenient
+            </h3>
+
+            <p>
+                Designed to provide a simple and convenient online healthcare experience.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= MISSION ================= -->
+
+    <section class="mission">
+
+        <h2>
+            Our Mission
+        </h2>
+
+        <p>
+            Our mission is to make healthcare access easier through a
+            user-friendly digital pharmacy platform that connects customers
+            with healthcare products, prescription services, consultations
+            and helpful health information.
+        </p>
+
+    </section>
+
+
+
+    <!-- ================= IMAGE FALLBACK ================= -->
+
+    <script>
+
+        const aboutImage =
+            document.getElementById("aboutImage");
+
+
+        aboutImage.addEventListener(
+            "error",
+            function () {
+
+                this.onerror = null;
+
+                const svg = `
+
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="1000"
+                        height="700"
+                        viewBox="0 0 1000 700">
+
+                        <defs>
+
+                            <linearGradient
+                                id="bg"
+                                x1="0"
+                                y1="0"
+                                x2="1"
+                                y2="1">
+
+                                <stop
+                                    offset="0%"
+                                    stop-color="#e8f9ff"/>
+
+                                <stop
+                                    offset="100%"
+                                    stop-color="#bce9f5"/>
+
+                            </linearGradient>
+
+                        </defs>
+
+
+                        <rect
+                            width="1000"
+                            height="700"
+                            fill="url(#bg)"/>
+
+
+                        <circle
+                            cx="500"
+                            cy="300"
+                            r="170"
+                            fill="white"
+                            opacity="0.9"/>
+
+
+                        <text
+                            x="500"
+                            y="360"
+                            text-anchor="middle"
+                            font-size="150">
+
+                            🏥
+
+                        </text>
+
+
+                        <text
+                            x="500"
+                            y="500"
+                            text-anchor="middle"
+                            font-family="Arial"
+                            font-size="42"
+                            font-weight="bold"
+                            fill="#087ea4">
+
+                            MediQuick Pharmacy
+
+                        </text>
+
+
+                        <text
+                            x="500"
+                            y="545"
+                            text-anchor="middle"
+                            font-family="Arial"
+                            font-size="24"
+                            fill="#52707c">
+
+                            Trusted Healthcare
+
+                        </text>
+
+                    </svg>
+
+                `;
+
+
+                this.src =
+                    "data:image/svg+xml;charset=UTF-8," +
+                    encodeURIComponent(svg);
+
+            }
+        );
+
+
+        /* Cart count */
+
+        const cart =
+            JSON.parse(
+                localStorage.getItem("mediquickCart")
+            ) || [];
+
+
+        const cartCount =
+            document.getElementById("cartCount");
+
+
+        if (cartCount) {
+
+            const total =
+                cart.reduce(
+                    (sum, item) =>
+                        sum + item.quantity,
+                    0
+                );
+
+            cartCount.textContent = total;
+
+        }
+
+    </script>
+
+
+</body>
+</html>

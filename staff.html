@@ -1,0 +1,1913 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Panel - MediQuick Pharmacy</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f1f8fc;
+    color:#17324d;
+}
+
+/* =========================
+   TOP NAVBAR
+========================= */
+
+.navbar{
+    height:70px;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+    box-shadow:0 2px 12px rgba(0,0,0,0.08);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+    color:#1598c9;
+}
+
+.logo span{
+    color:#17324d;
+}
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.role-badge{
+    background:#e5f7ff;
+    color:#087da9;
+    padding:9px 15px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.logout-btn{
+    border:none;
+    background:#1598c9;
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.logout-btn:hover{
+    background:#087da9;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.layout{
+    display:flex;
+    min-height:calc(100vh - 70px);
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar{
+    width:245px;
+    background:#17324d;
+    padding:25px 15px;
+    flex-shrink:0;
+}
+
+.sidebar-title{
+    color:#8edcff;
+    font-size:13px;
+    font-weight:bold;
+    text-transform:uppercase;
+    padding:10px 15px;
+    margin-bottom:8px;
+}
+
+.sidebar button{
+    width:100%;
+    background:transparent;
+    border:none;
+    color:#dceaf1;
+    text-align:left;
+    padding:13px 15px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+    margin-bottom:5px;
+}
+
+.sidebar button:hover,
+.sidebar button.active{
+    background:#1598c9;
+    color:white;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main{
+    flex:1;
+    padding:35px;
+    overflow-x:hidden;
+}
+
+.page-title{
+    margin-bottom:8px;
+    font-size:30px;
+}
+
+.page-description{
+    color:#718393;
+    margin-bottom:30px;
+}
+
+/* =========================
+   DASHBOARD CARDS
+========================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.stat-card{
+    background:white;
+    border-radius:15px;
+    padding:23px;
+    box-shadow:0 5px 18px rgba(0,0,0,0.06);
+}
+
+.stat-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.stat-icon{
+    width:48px;
+    height:48px;
+    border-radius:12px;
+    background:#e5f7ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:24px;
+}
+
+.stat-card h3{
+    font-size:28px;
+    margin-top:15px;
+}
+
+.stat-card p{
+    color:#718393;
+    margin-top:5px;
+}
+
+/* =========================
+   CONTENT GRID
+========================= */
+
+.content-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr;
+    gap:25px;
+}
+
+.panel{
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 5px 18px rgba(0,0,0,0.06);
+}
+
+.panel h2{
+    font-size:20px;
+    margin-bottom:20px;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.table-container{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    text-align:left;
+    padding:13px;
+    background:#f1f9fc;
+    color:#506b7c;
+    font-size:13px;
+}
+
+td{
+    padding:14px 13px;
+    border-bottom:1px solid #edf1f4;
+    font-size:14px;
+}
+
+.status{
+    display:inline-block;
+    padding:6px 10px;
+    border-radius:15px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.pending{
+    background:#fff4d6;
+    color:#9a6a00;
+}
+
+.approved{
+    background:#dcf8e7;
+    color:#168344;
+}
+
+.processing{
+    background:#e3f4ff;
+    color:#087da9;
+}
+
+/* =========================
+   QUICK ACTIONS
+========================= */
+
+.quick-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.action-btn{
+    border:1px solid #d8e8ef;
+    background:#f8fdff;
+    padding:17px;
+    border-radius:10px;
+    cursor:pointer;
+    color:#17324d;
+    font-weight:bold;
+    text-align:left;
+}
+
+.action-btn:hover{
+    background:#e9f9ff;
+    border-color:#1598c9;
+}
+
+/* =========================
+   PAGE SECTIONS
+========================= */
+
+.dashboard-section{
+    display:block;
+}
+
+.other-section{
+    display:none;
+}
+
+.section-box{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 18px rgba(0,0,0,0.06);
+}
+
+.section-box h2{
+    margin-bottom:10px;
+}
+
+.section-box > p{
+    color:#718393;
+    margin-bottom:25px;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.form-group.full{
+    grid-column:1 / -1;
+}
+
+.form-group label{
+    font-weight:bold;
+    font-size:14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    padding:12px;
+    border:1px solid #cbdde7;
+    border-radius:8px;
+    outline:none;
+}
+
+.form-group textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    border-color:#1598c9;
+}
+
+.primary-btn{
+    border:none;
+    background:#1598c9;
+    color:white;
+    padding:12px 22px;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:20px;
+}
+
+.primary-btn:hover{
+    background:#087da9;
+}
+
+/* =========================
+   ADMIN ONLY
+========================= */
+
+.admin-only{
+    display:none;
+}
+
+/* =========================
+   NOTIFICATION
+========================= */
+
+.notification{
+    padding:15px;
+    border-radius:10px;
+    background:#e9f9ff;
+    margin-bottom:12px;
+    border-left:4px solid #1598c9;
+}
+
+.notification strong{
+    display:block;
+    margin-bottom:5px;
+}
+
+.notification small{
+    color:#718393;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1100px){
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .content-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:800px){
+
+    .layout{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:100%;
+        display:flex;
+        overflow-x:auto;
+        padding:10px;
+    }
+
+    .sidebar-title{
+        display:none;
+    }
+
+    .sidebar button{
+        min-width:130px;
+        margin-right:5px;
+    }
+
+    .main{
+        padding:20px;
+    }
+
+    .navbar{
+        padding:0 20px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+
+    .role-badge{
+        display:none;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        Medi<span>Quick</span> Pharmacy
+    </div>
+
+    <div class="nav-right">
+
+        <span
+            class="role-badge"
+            id="roleBadge">
+            STAFF
+        </span>
+
+        <button
+            class="logout-btn"
+            onclick="logoutUser()">
+
+            Logout
+
+        </button>
+
+    </div>
+
+</nav>
+
+
+<div class="layout">
+
+
+<!-- =========================
+     SIDEBAR
+========================= -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-title">
+        Management
+    </div>
+
+
+    <button
+        class="active"
+        onclick="showSection('dashboard', this)">
+
+        📊 Dashboard
+
+    </button>
+
+
+    <button
+        onclick="showSection('orders', this)">
+
+        🛒 Orders
+
+    </button>
+
+
+    <button
+        onclick="showSection('prescriptions', this)">
+
+        📋 Prescriptions
+
+    </button>
+
+
+    <button
+        onclick="showSection('customers', this)">
+
+        👥 Customers
+
+    </button>
+
+
+    <button
+        onclick="showSection('inquiries', this)">
+
+        📩 Inquiries
+
+    </button>
+
+
+    <!-- ADMIN ONLY -->
+
+    <div
+        class="admin-only"
+        id="adminMenu">
+
+        <div class="sidebar-title">
+            Administration
+        </div>
+
+
+        <button
+            onclick="showSection('products', this)">
+
+            💊 Manage Products
+
+        </button>
+
+
+        <button
+            onclick="showSection('staff', this)">
+
+            👨‍💼 Staff Management
+
+        </button>
+
+
+        <button
+            onclick="showSection('reports', this)">
+
+            📈 Reports
+
+        </button>
+
+
+        <button
+            onclick="showSection('settings', this)">
+
+            ⚙️ System Settings
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+
+<main class="main">
+
+
+<!-- =========================
+     DASHBOARD
+========================= -->
+
+<section
+    id="dashboard"
+    class="dashboard-section">
+
+
+    <h1 class="page-title">
+        Admin Dashboard
+    </h1>
+
+
+    <p class="page-description">
+
+        Welcome to the MediQuick Pharmacy
+        management portal.
+
+    </p>
+
+
+    <!-- STATS -->
+
+    <div class="stats">
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <div>
+                    <small>Total Orders</small>
+                </div>
+
+                <div class="stat-icon">
+                    🛒
+                </div>
+
+            </div>
+
+            <h3>128</h3>
+
+            <p>
+                This month
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <div>
+                    <small>Prescriptions</small>
+                </div>
+
+                <div class="stat-icon">
+                    📋
+                </div>
+
+            </div>
+
+            <h3>24</h3>
+
+            <p>
+                Pending review
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <div>
+                    <small>Customers</small>
+                </div>
+
+                <div class="stat-icon">
+                    👥
+                </div>
+
+            </div>
+
+            <h3>356</h3>
+
+            <p>
+                Registered users
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <div>
+                    <small>Products</small>
+                </div>
+
+                <div class="stat-icon">
+                    💊
+                </div>
+
+            </div>
+
+            <h3>86</h3>
+
+            <p>
+                Available products
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- LOWER CONTENT -->
+
+    <div class="content-grid">
+
+
+        <!-- RECENT ORDERS -->
+
+        <div class="panel">
+
+            <h2>
+                Recent Orders
+            </h2>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Order ID
+                            </th>
+
+                            <th>
+                                Customer
+                            </th>
+
+                            <th>
+                                Product
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                #MQ1001
+                            </td>
+
+                            <td>
+                                Customer 01
+                            </td>
+
+                            <td>
+                                Paracetamol
+                            </td>
+
+                            <td>
+                                <span class="status processing">
+                                    Processing
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                #MQ1002
+                            </td>
+
+                            <td>
+                                Customer 02
+                            </td>
+
+                            <td>
+                                Vitamin C
+                            </td>
+
+                            <td>
+                                <span class="status approved">
+                                    Approved
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                #MQ1003
+                            </td>
+
+                            <td>
+                                Customer 03
+                            </td>
+
+                            <td>
+                                Omega 3
+                            </td>
+
+                            <td>
+                                <span class="status pending">
+                                    Pending
+                                </span>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- QUICK ACTIONS -->
+
+        <div class="panel">
+
+            <h2>
+                Quick Actions
+            </h2>
+
+
+            <div class="quick-actions">
+
+                <button
+                    class="action-btn"
+                    onclick="showSection('orders')">
+
+                    🛒
+                    <br>
+                    View Orders
+
+                </button>
+
+
+                <button
+                    class="action-btn"
+                    onclick="showSection('prescriptions')">
+
+                    📋
+                    <br>
+                    Review Prescriptions
+
+                </button>
+
+
+                <button
+                    class="action-btn"
+                    onclick="showSection('customers')">
+
+                    👥
+                    <br>
+                    View Customers
+
+                </button>
+
+
+                <button
+                    class="action-btn admin-only"
+                    id="quickProductButton"
+                    onclick="showSection('products')">
+
+                    💊
+                    <br>
+                    Add Product
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</section>
+
+
+<!-- =========================
+     ORDERS
+========================= -->
+
+<section
+    id="orders"
+    class="other-section">
+
+
+    <div class="section-box">
+
+        <h2>
+            Order Management
+        </h2>
+
+        <p>
+            View and manage customer orders.
+        </p>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Product</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+                        <td>#MQ1001</td>
+                        <td>Customer 01</td>
+                        <td>Paracetamol</td>
+                        <td>Rs. 450</td>
+                        <td>
+                            <span class="status processing">
+                                Processing
+                            </span>
+                        </td>
+                        <td>
+                            <button
+                                class="primary-btn"
+                                onclick="updateOrder(this)">
+                                Update
+                            </button>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>#MQ1002</td>
+                        <td>Customer 02</td>
+                        <td>Vitamin C</td>
+                        <td>Rs. 1,250</td>
+                        <td>
+                            <span class="status approved">
+                                Approved
+                            </span>
+                        </td>
+                        <td>
+                            <button
+                                class="primary-btn"
+                                onclick="updateOrder(this)">
+                                Update
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PRESCRIPTIONS
+========================= -->
+
+<section
+    id="prescriptions"
+    class="other-section">
+
+
+    <div class="section-box">
+
+        <h2>
+            Prescription Requests
+        </h2>
+
+        <p>
+            Review prescription requests
+            submitted by customers.
+        </p>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Request ID</th>
+                        <th>Customer</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            PR001
+                        </td>
+
+                        <td>
+                            Customer 01
+                        </td>
+
+                        <td>
+                            11/09/2026
+                        </td>
+
+                        <td>
+                            <span class="status pending">
+                                Pending
+                            </span>
+                        </td>
+
+                        <td>
+
+                            <button
+                                class="primary-btn"
+                                onclick="approvePrescription(this)">
+
+                                Review
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            PR002
+                        </td>
+
+                        <td>
+                            Customer 02
+                        </td>
+
+                        <td>
+                            11/09/2026
+                        </td>
+
+                        <td>
+                            <span class="status approved">
+                                Approved
+                            </span>
+                        </td>
+
+                        <td>
+                            Completed
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CUSTOMERS
+========================= -->
+
+<section
+    id="customers"
+    class="other-section">
+
+
+    <div class="section-box">
+
+        <h2>
+            Customer Management
+        </h2>
+
+        <p>
+            View registered MediQuick customers.
+        </p>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Username</th>
+                        <th>Role</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="customerTable">
+
+                    <tr>
+
+                        <td>
+                            Registered Customer
+                        </td>
+
+                        <td>
+                            Customer email
+                        </td>
+
+                        <td>
+                            Customer
+                        </td>
+
+                        <td>
+                            Customer
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     INQUIRIES
+========================= -->
+
+<section
+    id="inquiries"
+    class="other-section">
+
+
+    <div class="section-box">
+
+        <h2>
+            Customer Inquiries
+        </h2>
+
+        <p>
+            Manage healthcare questions
+            and customer messages.
+        </p>
+
+
+        <div class="notification">
+
+            <strong>
+                New customer inquiry
+            </strong>
+
+            Customer has submitted a
+            healthcare-related inquiry.
+
+            <br>
+
+            <small>
+                Today
+            </small>
+
+        </div>
+
+
+        <div class="notification">
+
+            <strong>
+                Consultation request
+            </strong>
+
+            A customer has requested
+            a doctor consultation.
+
+            <br>
+
+            <small>
+                Today
+            </small>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PRODUCTS - ADMIN ONLY
+========================= -->
+
+<section
+    id="products"
+    class="other-section admin-only"
+    data-admin-section>
+
+
+    <div class="section-box">
+
+        <h2>
+            Manage Products
+        </h2>
+
+        <p>
+            Add and manage pharmacy products.
+        </p>
+
+
+        <form
+            onsubmit="addProduct(event)">
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Product Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="productName"
+                        placeholder="Enter product name"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Category
+                    </label>
+
+                    <select
+                        id="productCategory"
+                        required>
+
+                        <option value="">
+                            Select Category
+                        </option>
+
+                        <option>
+                            OTC
+                        </option>
+
+                        <option>
+                            Prescription
+                        </option>
+
+                        <option>
+                            Wellness
+                        </option>
+
+                        <option>
+                            Personal Care
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Price
+                    </label>
+
+                    <input
+                        type="number"
+                        id="productPrice"
+                        placeholder="Enter price"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Stock Quantity
+                    </label>
+
+                    <input
+                        type="number"
+                        id="productStock"
+                        placeholder="Enter quantity"
+                        required>
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>
+                        Description
+                    </label>
+
+                    <textarea
+                        id="productDescription"
+                        placeholder="Enter product description">
+                    </textarea>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="primary-btn">
+
+                + Add Product
+
+            </button>
+
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     STAFF MANAGEMENT
+========================= -->
+
+<section
+    id="staff"
+    class="other-section admin-only"
+    data-admin-section>
+
+
+    <div class="section-box">
+
+        <h2>
+            Staff Management
+        </h2>
+
+        <p>
+            Manage pharmacy staff accounts.
+        </p>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Staff ID
+                        </th>
+
+                        <th>
+                            Name
+                        </th>
+
+                        <th>
+                            Username
+                        </th>
+
+                        <th>
+                            Role
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            ST001
+                        </td>
+
+                        <td>
+                            Pharmacy Staff
+                        </td>
+
+                        <td>
+                            staff
+                        </td>
+
+                        <td>
+                            Staff
+                        </td>
+
+                        <td>
+                            <span class="status approved">
+                                Active
+                            </span>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     REPORTS
+========================= -->
+
+<section
+    id="reports"
+    class="other-section admin-only"
+    data-admin-section>
+
+
+    <div class="section-box">
+
+        <h2>
+            Reports
+        </h2>
+
+        <p>
+            Pharmacy system reports and statistics.
+        </p>
+
+
+        <div class="stats">
+
+            <div class="stat-card">
+
+                <small>
+                    Monthly Orders
+                </small>
+
+                <h3>
+                    128
+                </h3>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <small>
+                    Monthly Sales
+                </small>
+
+                <h3>
+                    Rs. 245K
+                </h3>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <small>
+                    New Customers
+                </small>
+
+                <h3>
+                    42
+                </h3>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <small>
+                    Pending Requests
+                </small>
+
+                <h3>
+                    24
+                </h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SETTINGS
+========================= -->
+
+<section
+    id="settings"
+    class="other-section admin-only"
+    data-admin-section>
+
+
+    <div class="section-box">
+
+        <h2>
+            System Settings
+        </h2>
+
+        <p>
+            Manage MediQuick Pharmacy system settings.
+        </p>
+
+
+        <div class="form-group">
+
+            <label>
+                Pharmacy Name
+            </label>
+
+            <input
+                type="text"
+                value="MediQuick Pharmacy">
+
+        </div>
+
+
+        <div class="form-group"
+             style="margin-top:18px;">
+
+            <label>
+                Location
+            </label>
+
+            <input
+                type="text"
+                value="Kurunegala, Sri Lanka">
+
+        </div>
+
+
+        <button
+            class="primary-btn"
+            onclick="saveSettings()">
+
+            Save Settings
+
+        </button>
+
+    </div>
+
+</section>
+
+
+</main>
+
+</div>
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+/* =========================================
+   GET LOGGED USER
+========================================= */
+
+const currentUser =
+    JSON.parse(
+        localStorage.getItem(
+            "mediquickLoggedUser"
+        )
+    );
+
+
+/* =========================================
+   SECURITY
+========================================= */
+
+if (!currentUser) {
+
+    window.location.replace("login.html");
+
+}
+
+
+/* =========================================
+   ROLE DISPLAY
+========================================= */
+
+if (currentUser) {
+
+    const roleBadge =
+        document.getElementById("roleBadge");
+
+    if (roleBadge) {
+
+        roleBadge.textContent =
+            currentUser.role.toUpperCase();
+
+    }
+
+
+    /* ADMIN */
+
+    if (currentUser.role === "admin") {
+
+        document
+            .querySelectorAll(".admin-only")
+            .forEach(function(element){
+
+                element.style.display =
+                    element.classList.contains("sidebar-title")
+                    ? "block"
+                    : "block";
+
+            });
+
+    }
+
+}
+
+
+/* =========================================
+   SECTION SWITCHING
+========================================= */
+
+function showSection(sectionId, button){
+
+    document
+        .querySelectorAll(
+            ".dashboard-section, .other-section"
+        )
+        .forEach(function(section){
+
+            section.style.display = "none";
+
+        });
+
+
+    const selected =
+        document.getElementById(sectionId);
+
+
+    if (selected) {
+
+        selected.style.display = "block";
+
+    }
+
+
+    document
+        .querySelectorAll(".sidebar button")
+        .forEach(function(btn){
+
+            btn.classList.remove("active");
+
+        });
+
+
+    if (button) {
+
+        button.classList.add("active");
+
+    }
+
+}
+
+
+/* =========================================
+   ORDER UPDATE
+========================================= */
+
+function updateOrder(button){
+
+    const row =
+        button.closest("tr");
+
+    const status =
+        row.querySelector(".status");
+
+    status.textContent =
+        "Approved";
+
+    status.className =
+        "status approved";
+
+    alert(
+        "Order status updated successfully."
+    );
+
+}
+
+
+/* =========================================
+   PRESCRIPTION
+========================================= */
+
+function approvePrescription(button){
+
+    const row =
+        button.closest("tr");
+
+    const status =
+        row.querySelector(".status");
+
+    status.textContent =
+        "Approved";
+
+    status.className =
+        "status approved";
+
+    button.textContent =
+        "Approved";
+
+    button.disabled = true;
+
+    alert(
+        "Prescription approved successfully."
+    );
+
+}
+
+
+/* =========================================
+   ADD PRODUCT
+========================================= */
+
+function addProduct(event){
+
+    event.preventDefault();
+
+
+    const name =
+        document.getElementById(
+            "productName"
+        ).value;
+
+
+    alert(
+        name +
+        " has been added successfully."
+    );
+
+
+    event.target.reset();
+
+}
+
+
+/* =========================================
+   SETTINGS
+========================================= */
+
+function saveSettings(){
+
+    alert(
+        "System settings saved successfully."
+    );
+
+}
+
+
+/* =========================================
+   CUSTOMER TABLE
+========================================= */
+
+const registeredCustomer =
+    JSON.parse(
+        localStorage.getItem(
+            "mediquickRegisteredUser"
+        )
+    );
+
+
+if (registeredCustomer) {
+
+    const table =
+        document.getElementById(
+            "customerTable"
+        );
+
+
+    if (table) {
+
+        table.innerHTML = `
+
+            <tr>
+
+                <td>
+                    ${registeredCustomer.fullName}
+                </td>
+
+                <td>
+                    ${registeredCustomer.email}
+                </td>
+
+                <td>
+                    ${registeredCustomer.username}
+                </td>
+
+                <td>
+                    Customer
+                </td>
+
+            </tr>
+
+        `;
+
+    }
+
+}
+
+</script>
+
+
+</body>
+
+</html>
