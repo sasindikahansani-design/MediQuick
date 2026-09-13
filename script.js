@@ -588,6 +588,12 @@ function displayLoggedUser() {
 }
 
 
+/*    Alert Function     */
+function alert1(){
+    alert('Prescription Upload Successfully')
+}
+
+
 /* =====================================================
    LOGOUT
    ===================================================== */
